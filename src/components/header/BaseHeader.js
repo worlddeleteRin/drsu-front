@@ -3,7 +3,9 @@ import { Button } from '@mui/material';
 
 function BaseHeader () {
     return (
-        <>
+        <div
+            className="border-black"
+        >
             <Button
                 color="primary"
                 variant="contained"
@@ -16,7 +18,7 @@ function BaseHeader () {
                 some text is here
             </Button>
             base header is here
-        </>
+        </div>
     )
 }
 
