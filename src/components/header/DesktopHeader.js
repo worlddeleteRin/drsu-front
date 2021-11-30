@@ -142,14 +142,15 @@ function DesktopHeader() {
             >
                 {
                     link_item.children?.map((child_route) => (
-                                <MenuItem
-                                    key={child_route.id}
-                                    onClick={handleClose}
-                                >
-                                    <Link href={child_route?.link?.to}>
-                                        { child_route?.title }
-                                    </Link>
-                                </ MenuItem>
+
+                                <Link href={child_route?.link?.to}>
+                                    <MenuItem
+                                        key={child_route.id}
+                                        onClick={handleClose}
+                                    >
+                                            { child_route?.title }
+                                    </ MenuItem>
+                                </Link>
                     ))
                 }
             </Menu>
