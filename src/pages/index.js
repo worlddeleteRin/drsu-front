@@ -9,6 +9,7 @@ import IntroContainer1 from '@/components/content/IntroContainer1';
 import Features from '@/components/content/Features';
 import BlockContainer1 from '@/components/content/BlockContainer1';
 import ServicesBlock from '@/components/content/ServicesBlock';
+import TabsContainer from '@/components/content/TabsContainer';
 
 export default function Home() {
     const features = [
@@ -25,6 +26,7 @@ export default function Home() {
         <Features/>
         <BlockContainer1 />
         <ServicesBlock />
+        <TabsContainer />
     </div>
   )
 }
