@@ -12,10 +12,10 @@ export default function Home() {
     </div>
     <div>
         <Link href={{
-                pathname: "services/uborka",
+                pathname: "/services/asdfasdf",
             }}
             >
-            go to service page
+            asdff
         </Link>
     </div>
     </>

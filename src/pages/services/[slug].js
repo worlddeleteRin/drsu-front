@@ -19,7 +19,9 @@ function ServicePage ({}) {
             "site/services/" + slug
         ).then((response) => {
             setPageData(response?.data)
-        })
+        }).catch((error) => {
+            console.log('error', error.response)
+        });
     }
     useEffect(() => {
         if (!router.isReady) return
@@ -35,6 +37,9 @@ function ServicePage ({}) {
         return (
             <>
                 not page data
+                <Link href="/">
+                    go main page
+                </Link>
             </>
         );
     }

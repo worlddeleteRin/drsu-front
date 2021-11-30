@@ -1,24 +1,24 @@
-import { Icon } from '@iconify/react';
-import { Button } from '@mui/material';
 
-function BaseHeader () {
+import { useSite } from '@/hooks/useSite';
+
+import { useEffect, useState } from 'react';
+
+import Link  from 'next/link';
+import { useRouter } from 'next/router';
+
+import DesktopHeader from '@/components/header/DesktopHeader';
+import MobileHeader from '@/components/header/MobileHeader';
+
+function BaseHeader() {
     return (
-        <div
-            className="border-black"
-        >
-            <Button
-                color="primary"
-                variant="contained"
-                startIcon={
-                    <Icon 
-                    width="25"
-                    icon="mdi:account-circle"/>
-                }
-            >
-                some text is here
-            </Button>
-            base header is here
+        <>
+        <div className="hidden md:block">
+            <DesktopHeader />
         </div>
+        <div className="block md:hidden">
+            <MobileHeader />
+        </div>
+        </>
     )
 }
 

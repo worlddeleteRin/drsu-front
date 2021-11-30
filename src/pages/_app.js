@@ -5,14 +5,21 @@ import 'tailwindcss/tailwind.css'
 import BaseHeader from '@/components/header/BaseHeader';
 import { theme } from '@/theme';
 import { ThemeProvider } from '@mui/material/styles';
+import { RecoilRoot } from 'recoil';
+import { StyledEngineProvider } from '@mui/material/styles';
+
 
 function MyApp({ Component, pageProps }) {
   return (
       <>
-      <ThemeProvider theme={theme}>
-            <BaseHeader />
-            <Component {...pageProps} />
-      </ThemeProvider>
+      <RecoilRoot>
+          <StyledEngineProvider>
+          <ThemeProvider theme={theme}>
+                <BaseHeader />
+                <Component {...pageProps} />
+          </ThemeProvider>
+          </StyledEngineProvider>
+      </RecoilRoot>
       </>
   );
 }
