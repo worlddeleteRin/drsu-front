@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
           <ThemeProvider theme={theme}>
                 <BaseHeader />
                 <Component {...pageProps} />
+
           </ThemeProvider>
           </StyledEngineProvider>
       </RecoilRoot>

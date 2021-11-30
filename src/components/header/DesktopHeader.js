@@ -34,22 +34,6 @@ function DesktopHeader() {
         setOpenMenu(null);
     }
 
-    useEffect(() => {
-        if (!siteHook.headerLinks) {
-            siteHook.getHeaderLinks()
-        }
-        if (!siteHook.commonInfo) {
-            siteHook.getCommonInfo()
-        }
-    }, []);
-
-    if (siteHook.headerLoading || siteHook.commonInfoLoading) {
-        return (
-            <>
-                <CircularProgress />
-            </>
-        )
-    }
 
     const contactInfo = (
         <div>
