@@ -51,7 +51,7 @@ function BaseHeader() {
         <div className="hidden md:block">
             <DesktopHeader />
         </div>
-        <div className="block md:hidden">
+        <div className="block md:hidden mb-[59px]">
             <MobileHeader />
         </div>
         </>
