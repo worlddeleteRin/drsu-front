@@ -2,6 +2,10 @@ import { defaultFeatures } from '@/helpers/content';
 import { Icon } from '@iconify/react';
 import Title from '@/components/content/Title';
 
+import {
+    Fab
+} from '@mui/material';
+
 function Features (props) {
     let features = []
 
@@ -12,20 +16,26 @@ function Features (props) {
     }
 
     const title = (
-        <div
-            className="text-[50px] tracking-wide font-semibold"
-        >
-            Наши преимущества
-        </div>
+        <Title 
+            title="Наши преимущества"
+        />
     )
 
     const Feature = ({feature}) => {
         return (
-            <div className="bg-blue-50 rounded-md py-3 px-3 flex-1 min-w-[150px] min-h-[110px] flex flex-col justify-center">
-                <Icon
-                    icon={feature?.icon}
-                />
+            <div className="bg-blue-50 rounded-md py-3 px-3 flex-1 min-w-[150px] min-h-[110px] flex flex-col items-center">
                 <div>
+                    <Fab
+                        color="primary"
+                    >
+                        <Icon
+                            className=""
+                            icon={feature?.icon}
+                            width="25"
+                        />
+                    </Fab>
+                </div>
+                <div className="mt-3">
                 { feature?.title }
                 </div>
             </div>
