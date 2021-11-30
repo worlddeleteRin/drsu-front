@@ -20,10 +20,15 @@ function DesktopHeader() {
     const router = useRouter()
     const siteHook = useSite()
 
+
     const [anchorEl, setAnchorEl] = useState(null);
     // const open = Boolean(anchorEl);
     const [openMenu, setOpenMenu] = useState(null);
 
+
+    const handleOpenCallModal = () => {
+        siteHook.setRequestCallModal(true)
+    }
 
     const handleClick = (event, item_id) => {
         setAnchorEl(event.currentTarget);
@@ -33,6 +38,7 @@ function DesktopHeader() {
         setAnchorEl(null);
         setOpenMenu(null);
     }
+
 
 
     const contactInfo = (
@@ -51,6 +57,7 @@ function DesktopHeader() {
         <div>
             <Button 
                 variant="contained"
+                onClick={handleOpenCallModal}
             >
                 Заказать звонок
             </Button>
@@ -132,19 +139,19 @@ function DesktopHeader() {
                 MenuListProps={{
                     // onMouseLeave: handleClose
                 }}
-                children={
-                    link_item.children?.map((child_route) => (
-                        <MenuItem
-                            key={child_route.id}
-                            onClick={handleClose}
-                        >
-                            <Link href={child_route?.link?.to}>
-                                { child_route?.title }
-                            </Link>
-                        </ MenuItem>
-                    ))
-                } 
             >
+                {
+                    link_item.children?.map((child_route) => (
+                                <MenuItem
+                                    key={child_route.id}
+                                    onClick={handleClose}
+                                >
+                                    <Link href={child_route?.link?.to}>
+                                        { child_route?.title }
+                                    </Link>
+                                </ MenuItem>
+                    ))
+                }
             </Menu>
             }
             </span>

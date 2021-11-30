@@ -8,6 +8,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { RecoilRoot } from 'recoil';
 import { StyledEngineProvider } from '@mui/material/styles';
 
+import RequestCallModal from '@/components/modals/RequestCallModal';
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +19,7 @@ function MyApp({ Component, pageProps }) {
           <ThemeProvider theme={theme}>
                 <BaseHeader />
                 <Component {...pageProps} />
-
+                <RequestCallModal />
           </ThemeProvider>
           </StyledEngineProvider>
       </RecoilRoot>

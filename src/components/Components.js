@@ -7,7 +7,7 @@ const Components = {
     "TestComponent": TestComponent,
 }
 
-export default (component) => {
+const getComponent = (component) => {
     if(typeof Components[component?.name] !== "undefined") {
         return React.createElement(
             Components[component?.name],
@@ -19,3 +19,5 @@ export default (component) => {
     }
     return undefined
 }
+
+export default getComponent

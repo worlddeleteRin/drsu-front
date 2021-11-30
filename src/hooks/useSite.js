@@ -7,6 +7,8 @@ import { APISite } from '@/api/site';
 import { 
     commonInfoState,
     headerLinksState,
+    // modals
+    requestCallModalOpenState,
 } from '@/atoms/siteState';
 
 export const useSite = () => {
@@ -15,6 +17,9 @@ export const useSite = () => {
 
     const [commonInfoLoading, setCommonInfoLoading] = useState(false)
     const [headerLoading, setHeaderLoading] = useState(false)
+
+    // modals
+    const [requestCallModalOpen, setRequestCallModalOpen] = useRecoilState(requestCallModalOpenState)
 
     const getCommonInfo = async () => {
         setCommonInfoLoading(true)
@@ -29,6 +34,10 @@ export const useSite = () => {
         setHeaderLoading(false)
     }
 
+    const setRequestCallModal = (is_open) => {
+        setRequestCallModalOpen(is_open) 
+    }
+
     return {
         commonInfo,
         headerLinks,
@@ -37,6 +46,10 @@ export const useSite = () => {
         getHeaderLinks,
         // loaders
         commonInfoLoading,
+        // modals
+        requestCallModalOpen,
+         // modals functions
+        setRequestCallModal,
     }
 }
 

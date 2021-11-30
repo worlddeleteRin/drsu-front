@@ -9,3 +9,8 @@ export const headerLinksState = atom({
     key: 'headerLinksState',
     default: null,
 })
+
+export const requestCallModalOpenState = atom({
+    key: 'requestCallModalOpenState',
+    default: true, 
+})
