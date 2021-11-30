@@ -44,7 +44,7 @@ function Features (props) {
     return (
         <div className="py-10 px-2">
             <div 
-                className="max-w-screen-xl mx-auto"
+                className="max-w-screen-lg mx-auto"
             >
                 { title }
                 <div class="flex gap-3 flex-wrap mt-7">

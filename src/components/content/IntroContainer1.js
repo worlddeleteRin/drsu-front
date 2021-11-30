@@ -101,7 +101,7 @@ function IntroContainer1 (props) {
         >
             { background }
             <div
-                className="max-w-screen-xl mx-auto w-full relative z-[5] md:px-12 px-2 py-10"
+                className="max-w-screen-lg mx-auto w-full relative z-[5] md:px-12 px-2 py-10"
             >
                 <div 
                     className="relative md:w-9/12 h-full flex flex-col"
