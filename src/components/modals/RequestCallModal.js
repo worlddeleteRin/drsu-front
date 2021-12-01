@@ -101,7 +101,7 @@ function RequestCallModal() {
             <div
                 className="max-w-[800px] md:min-w-[700px] min-h-[200px] py-6 sm:px-10 px-7 flex flex-col  h-full"
             >
-                <div class="w-11/12 sm:w-10/12 flex flex-col justify-center h-full">
+                <div className="w-11/12 sm:w-10/12 flex flex-col justify-center h-full">
                     { title }
                     { description }
                     { formInputs }

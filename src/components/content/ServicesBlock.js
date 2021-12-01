@@ -59,7 +59,7 @@ function ServicesBlock (props) {
     }
 
     return (
-        <div class="py-10 bg-gray-50 mt-6">
+        <div className="py-10 bg-gray-50 mt-6">
             <div className="max-w-screen-lg mx-2 md:mx-auto">
 
                 { title }

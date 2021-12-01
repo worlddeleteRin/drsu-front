@@ -10,6 +10,7 @@ import Features from '@/components/content/Features';
 import BlockContainer1 from '@/components/content/BlockContainer1';
 import ServicesBlock from '@/components/content/ServicesBlock';
 import TabsContainer from '@/components/content/TabsContainer';
+import SocialsBlock from '@/components/content/SocialsBlock';
 
 export default function Home() {
     const features = [
@@ -21,12 +22,12 @@ export default function Home() {
     <div>
         <IntroContainer1 
             title="Служба услуг ДРСУ82"
-            imgsrc="https://cheljabinsk.ooskidka.ru/wp-content/uploads/2020/11/otdelochnye-raboty-fon.jpg"
         />
         <Features/>
         <BlockContainer1 />
         <ServicesBlock />
         <TabsContainer />
+        <SocialsBlock />
     </div>
   )
 }

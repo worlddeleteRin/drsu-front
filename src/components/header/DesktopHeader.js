@@ -143,7 +143,9 @@ function DesktopHeader() {
                 {
                     link_item.children?.map((child_route) => (
 
-                                <Link href={child_route?.link?.to}>
+                                <Link 
+                                    key={child_route?.id}
+                                    href={child_route?.link?.to}>
                                     <MenuItem
                                         key={child_route.id}
                                         onClick={handleClose}

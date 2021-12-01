@@ -81,3 +81,7 @@ export const defaultTabsContainer = {
         },
     ],
 }
+
+export const socialsBlock = {
+    "imgsrc": "https://cheljabinsk.ooskidka.ru/wp-content/themes/ooskidka/images/phone.png"
+}

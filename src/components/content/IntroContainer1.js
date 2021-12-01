@@ -7,7 +7,8 @@ import { useSite } from '@/hooks/useSite';
 import { Icon } from '@iconify/react';
 
 function IntroContainer1 (props) {
-
+    const title = props?.title ? props.title : "Служба услуг ДРСУ82"
+    const imgsrc = props?.imgsrc ? props?.imgsrc : "https://cheljabinsk.ooskidka.ru/wp-content/uploads/2021/03/Remont-krovli.jpg"
 
     const site = useSite();
 
@@ -24,15 +25,15 @@ function IntroContainer1 (props) {
         </div>
         <img
             className="absolute top-0 left-0 z-[2] w-full h-full object-cover"
-            src={props?.imgsrc}
+            src={imgsrc}
         />
         </div>
     )
-    const title = (
+    const titleBlock = (
         <div
             className="text-white tracking-wider text-[35px] mx-auto md:mx-0 md:text-[65px] font-bold"
         >
-            { props?.title }
+            { title }
         </div>
     )
     const phone = (
@@ -82,7 +83,7 @@ function IntroContainer1 (props) {
         </div>
     )
     const requestCallButton = (
-        <div class="mt-7 flex">
+        <div className="mt-7 flex">
             <Button
                 color="secondary"
                 variant="contained"
@@ -106,7 +107,7 @@ function IntroContainer1 (props) {
                 <div 
                     className="relative md:w-9/12 h-full flex flex-col"
                 >
-                    { title }
+                    { titleBlock }
                     { phone }
                     { socials }
                     { requestCallButton }

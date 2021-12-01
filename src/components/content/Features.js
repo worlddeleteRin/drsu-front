@@ -47,7 +47,7 @@ function Features (props) {
                 className="max-w-screen-lg mx-auto"
             >
                 { title }
-                <div class="flex gap-3 flex-wrap mt-7">
+                <div className="flex gap-3 flex-wrap mt-7">
                     {features?.map((feature) => (
                         <Feature
                             key={feature}
