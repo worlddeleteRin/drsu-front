@@ -117,7 +117,7 @@ function DesktopHeader() {
         </div>
     )
     
-    const headerLinks = siteHook.headerLinks?.map((link_item) => (
+    const headerLinks = siteHook?.headerLinks?.map((link_item) => (
             <span
                 key={link_item.id}
             >

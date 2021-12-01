@@ -38,7 +38,7 @@ function BaseHeader() {
             </div>
     )
 
-    if (siteHook.headerLoading || siteHook.commonInfoLoading) {
+    if (siteHook.headerLoading || siteHook.commonInfoLoading || !Array.isArray(siteHook.headerLinks)) {
         return (
             <>
                 {headerLoading } 
