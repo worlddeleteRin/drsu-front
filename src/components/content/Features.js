@@ -1,6 +1,6 @@
 import { defaultFeatures } from '@/helpers/content';
 import { Icon } from '@iconify/react';
-import Title from '@/components/content/Title';
+import TitleBig from '@/components/content/TitleBig';
 
 import {
     Fab
@@ -16,8 +16,9 @@ function Features (props) {
     }
 
     const title = (
-        <Title 
+        <TitleBig
             title="Наши преимущества"
+            size="medium"
         />
     )
 
@@ -35,7 +36,7 @@ function Features (props) {
                         />
                     </Fab>
                 </div>
-                <div className="mt-3">
+                <div className="mt-4 text-lg tracking-wide">
                 { feature?.title }
                 </div>
             </div>
@@ -47,7 +48,7 @@ function Features (props) {
                 className="max-w-screen-lg mx-auto"
             >
                 { title }
-                <div className="flex gap-3 flex-wrap mt-7">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-7">
                     {features?.map((feature) => (
                         <Feature
                             key={feature}

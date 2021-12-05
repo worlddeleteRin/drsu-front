@@ -2,7 +2,7 @@ import {
     Button
 } from '@mui/material';
 
-import Title from '@/components/content/Title';
+import TitleBig from '@/components/content/TitleBig';
 import { defaultServices } from '@/helpers/content';
 
 import { useSetRecoilState } from 'recoil';
@@ -20,8 +20,9 @@ function ServicesBlock (props) {
 
     const services = props.services ? props.services : defaultServices
     const title = (
-        <Title
+        <TitleBig
             title="Наши услуги"
+            size="medium"
         /> 
     )
 

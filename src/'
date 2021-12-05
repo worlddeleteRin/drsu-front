@@ -15,30 +15,16 @@ import { useRecoilState } from 'recoil';
 
 import { useState } from 'react';
 
-import { useRouter } from 'next/router';
-
-
 import { 
     mobileMenuDrawerOpenState
 } from '@/atoms/siteState';
 
 
 function MobileDrawer ({commonInfo, headerLinks}) {
-    const router = useRouter();
     const [isOpen, setIsOpen] = useRecoilState(mobileMenuDrawerOpenState)
-    const [menuOpen, setMenuOpen] = useState(true)
 
     const handleClose = () => {
         setIsOpen(false)
-    }
-
-    const handleMenuClick = (id) => {
-        setMenuOpen((prevState => ({...prevState, [id]: !prevState[id]})))
-    }
-
-    const goToPage = (link) => {
-        router.push(link)
-        handleClose()
     }
 
 
@@ -57,24 +43,18 @@ function MobileDrawer ({commonInfo, headerLinks}) {
 
 
 
-
+    const socials_width = 32
+    const socials_size = "medium"
+    const socials_color = "secondary"
     const socials = (
         <div className="flex justify-center items-center gap-2">
-            { commonInfo?.socials && Object.keys(commonInfo?.socials).map((social, index) => {
-                const socials_width = 28
-                const socials_size = "medium"
-                const socials_color = "text-white"
-                return (
-                    <Fab
-                        key={index}
-                        size={socials_size}
-                        style={{backgroundColor: commonInfo?.socials[social]?.color}}
-                        className={socials_color}
-                    >
-                        <Icon icon={commonInfo?.socials[social]?.icon} width={socials_width} />
-                    </Fab>
-                );
-            })
+            { commonInfo?.socials && Object.keys(commonInfo?.socials).map((social, index) => (
+            <Fab 
+                key={index}
+                color={socials_color} size={socials_size}>
+                <Icon icon={commonInfo?.socials[social]?.icon} width={socials_width} />
+            </Fab>
+            ))
             }
         </div>
     )
@@ -92,28 +72,19 @@ function MobileDrawer ({commonInfo, headerLinks}) {
                 { headerLinks && 
                     headerLinks?.map((menuLink) => (
                         <span key={menuLink?.id}>
-                            <ListItemButton
-                                onClick={() => handleMenuClick(menuLink?.id)}
-                            >
+                            <ListItemButton>
                                     <ListItemIcon>
-                                        <Icon icon="bi:plus-square" width="30" className="text-primary"/>
+                                        <Icon icon="bx:bx-chevron-right" width="30" className="text-primary"/>
                                     </ListItemIcon>
                                     <ListItemText primary={menuLink?.title} />
                             </ListItemButton>
 
-                            <Collapse in={menuOpen[menuLink?.id]}>
+                            <Collapse in={false}>
                                 <List>
                                     {menuLink.children?.length > 0  && 
                                             menuLink?.children?.map((sublink, index) => (
-                                                <div key={index} className="ml-4">
-                                                     <ListItemButton
-                                                        onClick={() => goToPage(sublink?.link?.to)}
-                                                    >
-                                                            <ListItemIcon>
-                                                                <Icon icon="bx:bx-chevron-right" width="30" className="text-primary"/>
-                                                            </ListItemIcon>
-                                                            <ListItemText primary={sublink?.title} />
-                                                    </ListItemButton>
+                                                <div key={index}>
+                                                    content here
                                                 </div>
                                             ))
                                     }

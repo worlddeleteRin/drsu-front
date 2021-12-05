@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 import DesktopHeader from '@/components/header/DesktopHeader';
 import MobileHeader from '@/components/header/MobileHeader';
+import MobileDrawer from '@/components/header/MobileDrawer';
 
 import {
     useCommonInfo,
@@ -60,6 +61,10 @@ function BaseHeader() {
                 headerLinks={headerLinks}
             />
         </div>
+            <MobileDrawer 
+                commonInfo={commonInfo}
+                headerLinks={headerLinks}
+            />
         </>
     )
 }

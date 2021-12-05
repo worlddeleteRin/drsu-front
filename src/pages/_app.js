@@ -34,6 +34,7 @@ function MyApp({ Component, pageProps }) {
           </ThemeProvider>
           </StyledEngineProvider>
       </RecoilRoot>
+          <ReactQueryDevtools />
       </QueryClientProvider>
       </>
   );

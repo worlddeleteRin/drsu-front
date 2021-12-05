@@ -9,7 +9,43 @@ import { Icon } from '@iconify/react';
 import { requestCallModalOpenState } from '@/atoms/siteState';
 import { useSetRecoilState } from 'recoil';
 
+import { motion } from 'framer-motion';
+
 function IntroContainer1 (props) {
+    const titleMotion = {
+        hidden: { opacity: 0, y: -50 },
+        show: { 
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeInOut"
+            }
+        },
+    }
+    const leftMotion = {
+        hidden: { opacity: 0, x: -100 },
+        show: { 
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeInOut"
+            }
+        },
+    }
+    const bottomMotion = {
+        hidden: { opacity: 0, y: -100 },
+        show: { 
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeInOut"
+            }
+        },
+    }
+
     const title = props?.title ? props.title : "Служба услуг ДРСУ82"
     const imgsrc = props?.imgsrc ? props?.imgsrc : "https://cheljabinsk.ooskidka.ru/wp-content/uploads/2021/03/Remont-krovli.jpg"
     // eof props
@@ -37,26 +73,40 @@ function IntroContainer1 (props) {
         </div>
     )
     const titleBlock = (
-        <div
+        <motion.div
+            variants={titleMotion}
+            animate="show"
+            initial="hidden"
             className="text-white tracking-wider text-[35px] mx-auto md:mx-0 md:text-[65px] font-bold"
         >
             { title }
-        </div>
+        </motion.div>
     )
     const phone = (
-        <div className="mt-2 mx-auto md:mx-0">
+        <motion.div 
+            variants={leftMotion}
+            animate="show"
+            initial="hidden"
+            className="mt-2 mx-auto md:mx-0">
             <a 
                 className="text-white text-[24px] md:text-[32px] font-semibold"
                 href={'tel:' + commonInfo?.phone}>
                 { commonInfo?.phone_display }
             </a>
-        </div>
+        </motion.div>
     )
     const socials = (
         <div
+            variants={bottomMotion}
+            animate="show"
+            initial="hidden"
             className="mt-4 flex flex-row gap-4 mx-auto md:mx-0"
         >
-            <a href={commonInfo?.socials?.whatsapp}>
+            <a 
+                variants={bottomMotion}
+                animate="show"
+                initial="hidden"
+                href={commonInfo?.socials?.whatsapp?.link}>
                 <Button
                     variant="contained"
                     color="primary"
@@ -72,7 +122,7 @@ function IntroContainer1 (props) {
                 </Button>
             </a>
             <a 
-                href={commonInfo?.socials?.viber}>
+                href={commonInfo?.socials?.viber?.link}>
                 <Button
                     variant="contained"
                     color="primary"

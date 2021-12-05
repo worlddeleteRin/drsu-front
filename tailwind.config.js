@@ -1,4 +1,7 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
+  important: true,
   mode: 'jit',
   purge: [
     './pages/**/*.{js,ts,jsx,tsx}', 
@@ -6,7 +9,11 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    //extend: {},
+    colors: {
+        ...colors,
+        primary: "#fc4e03",
+        secondary: "#0345fc",
+    },
     screens: {
         'sm': '640px',
         'md': '900px',

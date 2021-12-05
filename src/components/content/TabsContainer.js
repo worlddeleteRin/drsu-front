@@ -4,64 +4,66 @@ import {
     Tab,
 } from '@mui/material';
 import {
-    TabContext,
-    TabList,
-    TabPanel
-} from '@mui/lab';
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
+} from '@mui/material';
 
-import Title from '@/components/content/Title';
+import { Icon } from '@iconify/react';
+
+import TitleBig from '@/components/content/TitleBig';
 
 import { useState } from 'react';
 
 
+
 function TabsContainer (props) {
+    const default_title = "Как рассчитывается стоимость?"
     const imgsrc = props?.imgsrc ? props.imgsrc : defaultTabsContainer.imgsrc
     const tabs = props?.tabs ? props.tabs : defaultTabsContainer.tabs
+    const title = props?.title || default_title
 
-    const [tabValue, setTabValue] = useState(1);
-
-    const handleSetTab = (event, newValue) => {
-        setTabValue(newValue)
+    const [expandedId, setExpanded] = useState(0)
+    const handleExpanded = (id) => {
+        const newId = id === expandedId ? null : id 
+        setExpanded(newId)
     }
 
-    const title = (
+
+    const titleBlock = (
         <div className="">
-            <Title title="Как рассчитывается стоимость"/>
+            <TitleBig 
+                title={title}
+                size="small"
+            />
         </div>
     )
 
     const tabsBlock = (
         <div>
-            { title }
-            <TabContext
-                value={tabValue}
-            >
-                <TabList
-                    variant="scrollable"
-                    scrollButtons="auto"
-                    onChange={handleSetTab}
-                >
-                    {tabs?.map((tab) =>
-                            <Tab
+            { titleBlock }
+                <div className="mt-5 grid gird-cols-1 gap-1"> 
+                    {tabs?.map((tab, index) =>
+                            <Accordion
+                                expanded={expandedId === index}
+                                onChange={() => handleExpanded(index)}
                                 key={tab?.id}
-                                label={tab?.title}
-                                value={tab?.id}
+                                className="rounded-xl"
                             >
-                            </Tab>
-                    )}
-                </TabList>
-                <div>
-                    {tabs?.map((tab) => 
-                            <div key={tab?.id}> 
-                            <TabPanel value={tab?.id}
-                                className="bg-gray-100 rounded-lg mt-3"
-                            >
-                                {tab?.content}
-                            </TabPanel>
-                            </div>
+                                <AccordionSummary
+                                    expandIcon={<Icon icon="bx:bx-chevron-down" width="30" className="text-white"/>}
+                                    className="rounded-xl bg-primary"
+                                >
+                                    <div className="font-semibold text-white tracking-wide">
+                                    { tab?.title }
+                                    </div>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    { tab?.content }
+                                </AccordionDetails>
+                            </Accordion>
                     )}
                 </div>
-              </TabContext>
         </div>
     )
     const imageBlock = (

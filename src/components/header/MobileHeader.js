@@ -12,6 +12,11 @@ import { useEffect, useState } from 'react';
 import Link  from 'next/link';
 import { useRouter } from 'next/router';
 
+import { 
+    mobileMenuDrawerOpenState 
+} from '@/atoms/siteState';
+import { useSetRecoilState } from 'recoil';
+
 
 function MobileHeader(props) {
     const router = useRouter()
@@ -19,12 +24,16 @@ function MobileHeader(props) {
     const commonInfo = props?.commonInfo || null;
     const headerLinks = props?.headerLinks || [];
 
+    const setMobileMenuOpen = useSetRecoilState(mobileMenuDrawerOpenState)
+    const openMobile = () => setMobileMenuOpen(true);
+
 
     const menu = (
         <>
             <IconButton
                 color="inherit"
                 size="large"
+                onClick={openMobile}
             >
                 <Icon
                     icon="feather:menu"
@@ -47,10 +56,10 @@ function MobileHeader(props) {
         </div>
     );
     const logo = (
-        <div>
+        <div className="w-2/12">
             <Link href="/">
                 <img
-                    className="h-[50px] object-contain"
+                    className="h-[50px] object-contain cursor-pointer"
                     src={commonInfo?.logo_src}
                 />
             </Link>
