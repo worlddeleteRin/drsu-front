@@ -1,5 +1,4 @@
 
-import { useSite } from '@/hooks/useSite';
 
 import { useEffect, useState } from 'react';
 
@@ -9,6 +8,11 @@ import { useRouter } from 'next/router';
 import DesktopHeader from '@/components/header/DesktopHeader';
 import MobileHeader from '@/components/header/MobileHeader';
 
+import {
+    useCommonInfo,
+    useHeaderLinks,
+} from '@/hooks/useSite';
+
 
 import {
     Skeleton
@@ -16,16 +20,12 @@ import {
 
 
 function BaseHeader() {
-    const siteHook = useSite();
+    const commonInfoQuery = useCommonInfo();
+    const headerLinksQuery = useHeaderLinks();
 
-    useEffect(() => {
-        if (!siteHook.headerLinks) {
-            siteHook.getHeaderLinks()
-        }
-        if (!siteHook.commonInfo) {
-            siteHook.getCommonInfo()
-        }
-    }, []);
+    const commonInfo = commonInfoQuery?.data
+    const headerLinks = headerLinksQuery?.data
+
 
     const headerLoading = (
             <div className="py-2 px-4 grid grid-cols-4 gap-2 max-w-screen-xl mx-auto">
@@ -38,7 +38,7 @@ function BaseHeader() {
             </div>
     )
 
-    if (siteHook.headerLoading || siteHook.commonInfoLoading || !Array.isArray(siteHook.headerLinks)) {
+    if (commonInfoQuery.isLoading || headerLinksQuery.isLoading) {
         return (
             <>
                 {headerLoading } 
@@ -49,10 +49,16 @@ function BaseHeader() {
     return (
         <>
         <div className="hidden md:block">
-            <DesktopHeader />
+            <DesktopHeader 
+                commonInfo={commonInfo}
+                headerLinks={headerLinks}
+            />
         </div>
         <div className="block md:hidden mb-[59px]">
-            <MobileHeader />
+            <MobileHeader 
+                commonInfo={commonInfo}
+                headerLinks={headerLinks}
+            />
         </div>
         </>
     )

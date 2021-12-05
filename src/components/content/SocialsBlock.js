@@ -1,7 +1,8 @@
 import Title from '@/components/content/Title';
 
 import { socialsBlock } from '@/helpers/content';
-import { useSite } from '@/hooks/useSite';
+
+import { useCommonInfo } from '@/hooks/useSite';
 
 import {
     Button
@@ -9,7 +10,8 @@ import {
 import { Icon } from '@iconify/react';
 
 function SocialsBlock() {
-    const site = useSite()
+    const commonInfoQuery = useCommonInfo();
+    const commonInfo = commonInfoQuery?.data
 
     const title = (
         <div>
@@ -30,7 +32,7 @@ function SocialsBlock() {
     const socials = (
         <div className="grid grid-cols-1 gap-3 text-center md:text-start">
             { title }
-            <a href={site?.commonInfo?.socials?.vk}>
+            <a href={commonInfo?.socials?.vk}>
                 <Button
                     color="primary"
                     variant="contained"
@@ -44,7 +46,7 @@ function SocialsBlock() {
                     ВКонтакте
                 </Button>
             </a>
-            <a href={site?.commonInfo?.socials?.whatsapp}>
+            <a href={commonInfo?.socials?.whatsapp}>
                 <Button
                     color="primary"
                     variant="contained"
@@ -58,7 +60,7 @@ function SocialsBlock() {
                    WhatsApp 
                 </Button>
             </a>
-            <a href={site?.commonInfo?.socials?.vk}>
+            <a href={commonInfo?.socials?.vk}>
                 <Button
                     color="primary"
                     variant="contained"

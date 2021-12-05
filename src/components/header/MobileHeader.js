@@ -7,17 +7,17 @@ import {
     Fab,
 } from '@mui/material';
 
-import { useSite } from '@/hooks/useSite';
-
 import { useEffect, useState } from 'react';
 
 import Link  from 'next/link';
 import { useRouter } from 'next/router';
 
 
-function MobileHeader() {
+function MobileHeader(props) {
     const router = useRouter()
-    const siteHook = useSite()
+
+    const commonInfo = props?.commonInfo || null;
+    const headerLinks = props?.headerLinks || [];
 
 
     const menu = (
@@ -35,7 +35,7 @@ function MobileHeader() {
     const requestCall = (
         <div>
             <Fab
-                href={'tel:' + siteHook?.commonInfo?.phone}
+                href={'tel:' + commonInfo?.phone}
                 color="primary"
                 size="small"
             >
@@ -51,7 +51,7 @@ function MobileHeader() {
             <Link href="/">
                 <img
                     className="h-[50px] object-contain"
-                    src={siteHook?.commonInfo?.logo_src}
+                    src={commonInfo?.logo_src}
                 />
             </Link>
         </div>

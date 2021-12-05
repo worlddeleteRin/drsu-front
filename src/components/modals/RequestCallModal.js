@@ -10,18 +10,20 @@ import {
 
 import { Icon } from '@iconify/react';
 
-import { useSite } from '@/hooks/useSite';
+import { requestCallModalOpenState } from '@/atoms/siteState';
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { useRecoilState } from 'recoil';
+
 
 
 function RequestCallModal() {
-    const siteHook = useSite();
+    const [isOpen, setOpen] = useRecoilState(requestCallModalOpenState);
 
     const handleClose = () => {
-        siteHook.setRequestCallModal(false)        
+        setOpen(false)
     }
 
     const theme = useTheme();
@@ -93,7 +95,7 @@ function RequestCallModal() {
 
     return (
         <Dialog 
-            open={siteHook.requestCallModalOpen}
+            open={isOpen}
             onClose={handleClose}
             fullScreen={fullScreen}
             maxWidth="800px"

@@ -5,14 +5,17 @@ import {
 import Title from '@/components/content/Title';
 import { defaultServices } from '@/helpers/content';
 
-import { useSite } from '@/hooks/useSite';
+import { useSetRecoilState } from 'recoil';
+
+import { requestCallModalOpenState } from '@/atoms/siteState';
 
 
 function ServicesBlock (props) {
-    const site = useSite()
+
+    const setRequestCallModal = useSetRecoilState(requestCallModalOpenState)
 
     const handleOpenCallModal = () => {
-        site.setRequestCallModal(true)
+        setRequestCallModal(true)
     }
 
     const services = props.services ? props.services : defaultServices

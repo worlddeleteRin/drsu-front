@@ -11,6 +11,7 @@ import ServicesBlock from '@/components/content/ServicesBlock';
 import TabsContainer from '@/components/content/TabsContainer';
 import SocialsBlock from '@/components/content/SocialsBlock';
 
+
 export default function Home() {
     const features = [
         {"asdf": "asdfasdf"},

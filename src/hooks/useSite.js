@@ -1,56 +1,30 @@
-
-import {useState} from 'react';
-import { useRecoilState } from "recoil";
+import {
+    useQuery
+} from 'react-query';
 
 import { APISite } from '@/api/site';
 
-import { 
-    commonInfoState,
-    headerLinksState,
-    // modals
-    requestCallModalOpenState,
-} from '@/atoms/siteState';
 
-export const useSite = () => {
-    const [commonInfo, setCommonInfo] = useRecoilState(commonInfoState)
-    const [headerLinks, setHeaderLinks] = useRecoilState(headerLinksState)
+export function useCommonInfo () {
+    return useQuery({
+        queryKey: ["common-info"], 
+        queryFn: APISite.getCommonInfo,
+        staleTime: Infinity,
+        retry: false,
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+    });
+}
 
-    const [commonInfoLoading, setCommonInfoLoading] = useState(false)
-    const [headerLoading, setHeaderLoading] = useState(false)
-
-    // modals
-    const [requestCallModalOpen, setRequestCallModalOpen] = useRecoilState(requestCallModalOpenState)
-
-    const getCommonInfo = async () => {
-        setCommonInfoLoading(true)
-        const data = await APISite.getCommonInfo()
-        setCommonInfo(data.data)
-        setCommonInfoLoading(false)
-    }
-    const getHeaderLinks = async () => {
-        setHeaderLoading(true)
-        const data = await APISite.getHeaderLinks()
-        setHeaderLinks(data.data)
-        setHeaderLoading(false)
-    }
-
-    const setRequestCallModal = (is_open) => {
-        setRequestCallModalOpen(is_open) 
-    }
-
-    return {
-        commonInfo,
-        headerLinks,
-        // functions
-        getCommonInfo,
-        getHeaderLinks,
-        // loaders
-        commonInfoLoading,
-        // modals
-        requestCallModalOpen,
-         // modals functions
-        setRequestCallModal,
-    }
+export function useHeaderLinks() {
+    return useQuery({
+        queryKey: ["header-links"], 
+        queryFn: APISite.getHeaderLinks,
+        staleTime: Infinity,
+        retry: false,
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+    });
 }
 
 

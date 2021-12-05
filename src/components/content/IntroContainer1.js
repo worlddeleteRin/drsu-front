@@ -2,18 +2,25 @@ import { Button,
 } from '@mui/material'
 
 import Link from 'next/link';
-import { useSite } from '@/hooks/useSite';
+import { useCommonInfo } from '@/hooks/useSite';
 
 import { Icon } from '@iconify/react';
+
+import { requestCallModalOpenState } from '@/atoms/siteState';
+import { useSetRecoilState } from 'recoil';
 
 function IntroContainer1 (props) {
     const title = props?.title ? props.title : "Служба услуг ДРСУ82"
     const imgsrc = props?.imgsrc ? props?.imgsrc : "https://cheljabinsk.ooskidka.ru/wp-content/uploads/2021/03/Remont-krovli.jpg"
+    // eof props
+    //
+    const setRequestCallModal = useSetRecoilState(requestCallModalOpenState)
 
-    const site = useSite();
+    const commonInfoQuery = useCommonInfo();
+    const commonInfo = commonInfoQuery?.data
 
     const handleOpenCallModal = () => {
-        site.setRequestCallModal(true);
+        setRequestCallModal(true);
     }
 
     const background = (
@@ -40,8 +47,8 @@ function IntroContainer1 (props) {
         <div className="mt-2 mx-auto md:mx-0">
             <a 
                 className="text-white text-[24px] md:text-[32px] font-semibold"
-                href={'tel:' + site?.commonInfo?.phone}>
-                { site?.commonInfo?.phone_display }
+                href={'tel:' + commonInfo?.phone}>
+                { commonInfo?.phone_display }
             </a>
         </div>
     )
@@ -49,7 +56,7 @@ function IntroContainer1 (props) {
         <div
             className="mt-4 flex flex-row gap-4 mx-auto md:mx-0"
         >
-            <a href={site?.commonInfo?.socials?.whatsapp}>
+            <a href={commonInfo?.socials?.whatsapp}>
                 <Button
                     variant="contained"
                     color="primary"
@@ -65,7 +72,7 @@ function IntroContainer1 (props) {
                 </Button>
             </a>
             <a 
-                href={site?.commonInfo?.socials?.viber}>
+                href={commonInfo?.socials?.viber}>
                 <Button
                     variant="contained"
                     color="primary"

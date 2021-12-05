@@ -8,17 +8,25 @@ import {
     Fab,
 } from '@mui/material';
 
-import { useSite } from '@/hooks/useSite';
 
 import { useEffect, useState } from 'react';
 
 import Link  from 'next/link';
 import { useRouter } from 'next/router';
 
+import { requestCallModalOpenState } from '@/atoms/siteState';
 
-function DesktopHeader() {
+import { useSetRecoilState } from 'recoil';
+
+
+
+function DesktopHeader(props) {
     const router = useRouter()
-    const siteHook = useSite()
+
+    const commonInfo = props?.commonInfo || null;
+    const headerLinks = props?.headerLinks || [];
+
+    const setCallModalOpen = useSetRecoilState(requestCallModalOpenState)
 
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -27,7 +35,7 @@ function DesktopHeader() {
 
 
     const handleOpenCallModal = () => {
-        siteHook.setRequestCallModal(true)
+        setCallModalOpen(true)
     }
 
     const handleClick = (event, item_id) => {
@@ -44,12 +52,12 @@ function DesktopHeader() {
     const contactInfo = (
         <div>
             <a 
-            href={'tel:'+ siteHook?.commonInfo?.phone}
+            href={'tel:'+ commonInfo?.phone}
             className="text-xl font-bold cursor-pointer">
-                { siteHook?.commonInfo?.phone_display }
+                { commonInfo?.phone_display }
             </a>
             <div className="text-gray-400 text-[14px] font-light">
-                { siteHook?.commonInfo?.working_time }
+                { commonInfo?.working_time }
             </div>
         </div>
     )
@@ -107,7 +115,7 @@ function DesktopHeader() {
             <Link href="/">
                 <img
                     className="max-h-[70px] cursor-pointer"
-                    src={siteHook?.commonInfo?.logo_src}
+                    src={commonInfo?.logo_src}
                 />
             </Link>
             { chooseCity }
@@ -117,7 +125,7 @@ function DesktopHeader() {
         </div>
     )
     
-    const headerLinks = siteHook?.headerLinks?.map((link_item) => (
+    const headerLinksBlock = headerLinks?.map((link_item) => (
             <span
                 key={link_item.id}
             >
@@ -169,7 +177,7 @@ function DesktopHeader() {
             </div>
             <div className="bg-gray-100 max-w-screen-xl mx-auto rounded-xl py-1">
                 <div className="mx-auto max-w-screen-xl h-full flex items-center justify-center">
-                    { headerLinks }
+                    { headerLinksBlock }
                 </div>
             </div>
         </div>

@@ -11,9 +11,20 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import RequestCallModal from '@/components/modals/RequestCallModal';
 
 
+// react-query devtools
+import { ReactQueryDevtools } from 'react-query/devtools';
+// react-query
+import {
+    QueryClient,
+    QueryClientProvider,
+} from 'react-query';
+
+
 function MyApp({ Component, pageProps }) {
+    const queryClient = new QueryClient();
   return (
       <>
+      <QueryClientProvider client={queryClient}>
       <RecoilRoot>
           <StyledEngineProvider>
           <ThemeProvider theme={theme}>
@@ -23,6 +34,7 @@ function MyApp({ Component, pageProps }) {
           </ThemeProvider>
           </StyledEngineProvider>
       </RecoilRoot>
+      </QueryClientProvider>
       </>
   );
 }
