@@ -1,12 +1,10 @@
 import { Icon } from '@iconify/react';
 import { 
     Button,
-    Menu,
-    MenuList,
-    MenuItem,
-    CircularProgress,
     Fab,
 } from '@mui/material';
+
+import { Menu } from '@mantine/core';
 
 
 import { useEffect, useState } from 'react';
@@ -29,8 +27,6 @@ function DesktopHeader(props) {
 
     const setCallModalOpen = useSetRecoilState(requestCallModalOpenState)
 
-
-    const [anchorEl, setAnchorEl] = useState(null);
     // const open = Boolean(anchorEl);
     const [openMenu, setOpenMenu] = useState(null);
 
@@ -39,13 +35,8 @@ function DesktopHeader(props) {
         setCallModalOpen(true)
     }
 
-    const handleClick = (event, item_id) => {
-        setAnchorEl(event.currentTarget);
-        setOpenMenu(item_id)
-    }
-    const handleClose = () => {
-        setAnchorEl(null);
-        setOpenMenu(null);
+    const goToPage = (route_link) => {
+        router.push(route_link)
     }
 
 
@@ -126,48 +117,47 @@ function DesktopHeader(props) {
         </div>
     )
     
-    const headerLinksBlock = headerLinks?.map((link_item) => (
-            <span
-                key={link_item.id}
-            >
-            <Button
-                className="text-black font-medium"
-                key={link_item.id}
-                aria-controls="basic-menu"
-                area-haspopup="true"
-                area-expanded={open ? 'true': undefined}
-                onClick={(e) => handleClick(e, link_item.id)}
-            >
-                { link_item?.title } 
-            </Button>
-                { link_item?.children.length > 0 &&
-            <Menu
-                open={openMenu === link_item.id}
-                onClose={handleClose}
-                anchorEl={anchorEl}
-                MenuListProps={{
-                    // onMouseLeave: handleClose
-                }}
-            >
-                {
-                    link_item.children?.map((child_route) => (
+    const controlMenuButton = (link_item) => (
+        <Button
+            className="text-black font-medium"
+            aria-controls="basic-menu"
+            area-haspopup="true"
+            area-expanded={open ? 'true': undefined}
+            onClick={() => goToPage(link_item?.link?.to)}
+        >
+            { link_item?.title } 
+        </Button>
+    )
+    const headerLinksBlock = headerLinks?.map((link_item) => {
+            return (
+                <span
+                    key={link_item.id}
+                >
+                    { link_item?.children.length > 0 ?
+                <Menu
+                    trigger="hover"
+                    delay={200}
+                    control={controlMenuButton(link_item)}
+                    open={openMenu === link_item.id}
+                >
+                    {
+                        link_item.children?.map((child_route) => (
 
-                                <Link 
-                                    key={child_route?.id}
-                                    href={child_route?.link?.to}>
-                                    <MenuItem
-                                        key={child_route.id}
-                                        onClick={handleClose}
-                                    >
-                                            { child_route?.title }
-                                    </ MenuItem>
-                                </Link>
-                    ))
+                                        <Menu.Item
+                                            key={child_route.id}
+                                            onClick={() => goToPage(child_route?.link?.to)}
+                                        >
+                                                { child_route?.title }
+                                        </ Menu.Item>
+                        ))
+                    }
+                </Menu>
+                :
+                    controlMenuButton(link_item)
                 }
-            </Menu>
-            }
-            </span>
-        )
+                </span>
+            );
+        }
     )
 
     return (
