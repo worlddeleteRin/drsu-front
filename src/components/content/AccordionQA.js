@@ -75,7 +75,7 @@ function AccordionQA (props) {
     )
    return (
        <div className="mx-4 py-10">
-            <div class="max-w-screen-lg mx-auto">
+            <div className="max-w-screen-lg mx-auto">
                 { titleBlock }
                 { accordionBlock }
             </div>

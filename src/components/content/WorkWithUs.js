@@ -23,7 +23,7 @@ function WorkWithUs (props) {
         />
     )
     const contentBlock = (
-        <div class="mt-10 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-wrap gap-4">
             {content && content.map((imgSrc, index) => (
                 <div key={index} className="">
                     <img
