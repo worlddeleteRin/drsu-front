@@ -16,10 +16,6 @@ import CallActionContainer from '@/components/content/CallActionContainer';
 
 
 export default function Home() {
-    const features = [
-        {"asdf": "asdfasdf"},
-        {"asdfadfs": "adsfasdf"},
-    ]
 
   return (
     <div>

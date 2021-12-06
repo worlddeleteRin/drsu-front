@@ -7,14 +7,22 @@ import Features from '@/components/content/Features';
 import IntroContainer1 from '@/components/content/IntroContainer1';
 import ServicesBlock from '@/components/content/ServicesBlock';
 import TabsContainer from '@/components/content/TabsContainer';
+import CallActionContainer from '@/components/content/CallActionContainer';
+import SocialsBlock from '@/components/content/SocialsBlock';
+import WorkWithUs from '@/components/content/WorkWithUs';
+import AccordionQA from '@/components/content/AccordionQA';
 
 const Components = {
-    "TestComponent": TestComponent,
+    'TestComponent': TestComponent,
     'BlockContainer1': BlockContainer1,
     'Features': Features,
     'IntroContainer1': IntroContainer1,
     'ServicesBlock': ServicesBlock,
     'TabsContainer': TabsContainer,
+    'CallActionContainer': CallActionContainer,
+    'SocialsBlock': SocialsBlock,
+    'WorkWithUs': WorkWithUs,
+    'AccordionQA': AccordionQA,
 }
 
 const getComponent = (component) => {
