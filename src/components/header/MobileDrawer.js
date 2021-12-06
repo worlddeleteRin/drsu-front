@@ -90,7 +90,10 @@ function MobileDrawer ({commonInfo, headerLinks}) {
         <div className="overflow-y-scroll flex-1">
             <List>
                 { headerLinks && 
-                    headerLinks?.map((menuLink) => (
+                    headerLinks?.map((menuLink) => {
+                        return (
+                        <>
+                        { menuLink?.children?.length > 0 ?
                         <span key={menuLink?.id}>
                             <ListItemButton
                                 onClick={() => handleMenuClick(menuLink?.id)}
@@ -119,8 +122,19 @@ function MobileDrawer ({commonInfo, headerLinks}) {
                                     }
                                 </List>
                             </Collapse>
-                        </span>
-                ))
+                        </span> :
+                            <ListItemButton
+                                onClick={() => goToPage(menuLink?.link?.to)}
+                            >
+                                    <ListItemIcon>
+                                        <Icon icon="bx:bx-chevron-right" width="30" className="text-primary"/>
+                                    </ListItemIcon>
+                                    <ListItemText primary={menuLink?.title} />
+                            </ListItemButton>
+                        }
+                        </>
+                    );
+                })
                 }
             </List>
         </div>
