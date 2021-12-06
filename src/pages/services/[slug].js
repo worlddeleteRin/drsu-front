@@ -12,15 +12,18 @@ function ServicePage ({}) {
     const router = useRouter();
     const { slug } = router.query
 
-    if (!slug) {
-        return (
-            <>
-            </>
-        )
-    }
+    console.log('slug is', slug)
+
     const servicePageQuery = useServicePage(slug)
     const servicePage = servicePageQuery.data
 
+    if (servicePageQuery.isLoading) {
+        return (
+            <>
+                Загрузка...
+            </>
+        )
+    }
 
     if (!servicePage?.page) {
         return (

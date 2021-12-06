@@ -13,6 +13,7 @@ export function useServicePage(slug) {
         retry: false,
         refetchOnMount: false,
         refetchOnWindowFocus: false,
+        enabled: slug && slug.length > 0,
     });
 }
 
