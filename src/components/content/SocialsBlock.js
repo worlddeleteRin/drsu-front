@@ -36,48 +36,26 @@ function SocialsBlock() {
         <div className="grid grid-cols-1 gap-3 md:text-start">
             { title }
             <div className="grid grid-cols-1 items-center text-center md:text-left gap-3">
-                <a href={commonInfo?.socials?.vk?.link}>
-                    <Button
-                        color="primary"
-                        variant="contained"
-                        startIcon={
-                            <Icon
-                                icon="akar-icons:vk-fill"
-                            />
-                        }
-                        className="bg-[#698cc8] w-full max-w-[280px]"
+                {commonInfo?.socials && Object.keys(commonInfo?.socials)?.map((social, index) => (
+                    <a 
+                        key={index}
+                        href={commonInfo?.socials[social]?.link}
                     >
-                        ВКонтакте
-                    </Button>
-                </a>
-                <a href={commonInfo?.socials?.whatsapp?.link}>
-                    <Button
-                        color="primary"
-                        variant="contained"
-                        startIcon={
-                            <Icon
-                                icon="akar-icons:whatsapp-fill"
-                            />
-                        }
-                        className="bg-[#83d05b] w-full max-w-[280px]"
-                    >
-                       WhatsApp 
-                    </Button>
-                </a>
-                <a href={commonInfo?.socials?.vk?.link}>
-                    <Button
-                        color="primary"
-                        variant="contained"
-                        startIcon={
-                            <Icon
-                                icon="cib:viber"
-                            />
-                        }
-                        className="bg-[#614d9b] w-full max-w-[280px]"
-                    >
-                       Viber 
-                    </Button>
-                </a>
+                        <Button
+                            variant="contained"
+                            startIcon={
+                                <Icon
+                                    icon={commonInfo?.socials[social]?.icon}
+                                />
+                            }
+                            className="w-full max-w-[280px]"
+                            style={{ backgroundColor: commonInfo?.socials[social]?.color }}
+                        >
+                            { commonInfo?.socials[social]?.title }
+                        </Button>
+                    </a>
+                    )   
+                )}
             </div>
         </div>
     )

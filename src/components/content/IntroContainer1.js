@@ -77,7 +77,7 @@ function IntroContainer1 (props) {
             variants={titleMotion}
             animate="show"
             initial="hidden"
-            className="text-white tracking-wider text-[35px] mx-auto md:mx-0 md:text-[65px] font-bold"
+            className="text-white tracking-wider text-[30px] mx-auto md:mx-0 md:text-[45px] font-bold"
         >
             { title }
         </motion.div>

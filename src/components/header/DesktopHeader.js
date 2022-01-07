@@ -45,10 +45,15 @@ function DesktopHeader(props) {
         <div>
             <a 
             href={'tel:'+ commonInfo?.phone}
-            className="text-xl font-bold cursor-pointer">
+                className="text-xl font-bold cursor-pointer hover:opacity-40 duration-200">
                 { commonInfo?.phone_display }
             </a>
-            <div className="text-gray-400 text-[14px] font-light">
+            <a 
+                href={"mailto:" + commonInfo?.mail}
+                className="hover:opacity-40 cursor-pointer text-primary duration-200 block">
+                { commonInfo?.mail }
+            </a>
+            <div className="text-gray-400 text-[14px] font-light hover:opacity-40 cursor-pointer duration-200">
                 { commonInfo?.working_time }
             </div>
         </div>
@@ -118,20 +123,20 @@ function DesktopHeader(props) {
     )
     
     const controlMenuButton = (link_item) => (
-        <Button
-            className="text-black font-medium"
-            aria-controls="basic-menu"
-            area-haspopup="true"
-            area-expanded={open ? 'true': undefined}
+        <div
+            className="px-1 py-1 border-l-2 border-white border-opacity-60 flex select-none cursor-pointer"
             onClick={() => goToPage(link_item?.link?.to)}
         >
-            { link_item?.title } 
-        </Button>
+            <div className="uppercase text-[12px] text-white">
+                { link_item?.title } 
+            </div>
+        </div>
     )
     const headerLinksBlock = headerLinks?.map((link_item) => {
             return (
                 <span
                     key={link_item.id}
+                    className="flex items-center"
                 >
                     { link_item?.children.length > 0 ?
                 <Menu
@@ -166,7 +171,7 @@ function DesktopHeader(props) {
             <div className="max-w-screen-xl mx-auto py-3">
                 { headerFirst }
             </div>
-            <div className="bg-gray-100 max-w-screen-xl mx-auto rounded-xl py-1">
+            <div className="bg-primary max-w-screen-xl mx-auto py-1">
                 <div className="mx-auto max-w-screen-xl h-full flex items-center justify-center">
                     { headerLinksBlock }
                 </div>

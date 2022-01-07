@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Link  from 'next/link';
 import { useRouter } from 'next/router';
 
+import StockLine from '@/components/header/StockLine';
 import DesktopHeader from '@/components/header/DesktopHeader';
 import MobileHeader from '@/components/header/MobileHeader';
 import MobileDrawer from '@/components/header/MobileDrawer';
@@ -49,6 +50,9 @@ function BaseHeader() {
 
     return (
         <>
+        <StockLine
+            className="hidden"
+        />
         <div className="hidden md:block">
             <DesktopHeader 
                 commonInfo={commonInfo}

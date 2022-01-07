@@ -1,7 +1,6 @@
 import '@/styles/globals.css'
-import 'tailwindcss/tailwind.css'
+// import 'tailwindcss/tailwind.css'
 
-// import base header
 import BaseHeader from '@/components/header/BaseHeader';
 import { theme } from '@/theme';
 import { ThemeProvider } from '@mui/material/styles';
